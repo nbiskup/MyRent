@@ -1,0 +1,73 @@
+﻿@model Task.Models.Apartment
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Apartment</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.IDApartment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IDApartment)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bedrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bedrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Bathrooms)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Bathrooms)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CanSleepMax)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CanSleepMax)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.From)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.From)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.To)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.To)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
+</p>
