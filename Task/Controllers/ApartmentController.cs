@@ -21,6 +21,11 @@ namespace Task.Controllers
             return View(repository.GetAll());
         }
 
+        public ActionResult Index(string searchInput)
+        {
+            return View(repository.GetAll().Where(a -))
+        }
+
 
         public ActionResult Details(int id)
         {

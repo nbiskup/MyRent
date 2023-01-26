@@ -1,73 +1,66 @@
 ﻿@model Task.Models.Apartment
 
 @{
-    ViewBag.Title = "Details";
+    ViewBag.Title = "Apartment Details";
 }
 
-<h2>Details</h2>
-
-<div>
-    <h4>Apartment</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.IDApartment)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.IDApartment)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Name)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Name)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bedrooms)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bedrooms)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Bathrooms)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Bathrooms)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.CanSleepMax)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.CanSleepMax)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.From)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.From)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.To)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.To)
-        </dd>
-
-    </dl>
+<div class="container">
+    <h1 class="text-center my-5">Apartment Details</h1>
+    <div class="card">
+        <div class="card-body">
+            <br />
+            <br />
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Name:</h4>
+                </div>
+                <div class="col-md-8">
+                    <p>@Html.DisplayFor(model => model.Name)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Bedrooms:</h4>
+                </div>
+                <div class="col-md-8">
+                    <p>@Html.DisplayFor(model => model.Bedrooms)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Bathrooms:</h4>
+                </div>
+                <div class="col-md-8">
+                    <p>@Html.DisplayFor(model => model.Bathrooms)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>Maximum Sleeping Capacity:</h4>
+                </div>
+                <div class="col-md-8">
+                    <p>@Html.DisplayFor(model => model.CanSleepMax)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>From:</h4>
+                </div>
+                <div class="col-md-8">
+                    <p>@Html.DisplayFor(model => model.From_ShortDate)</p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <h4>To:</h4>
+                </div>
+                <div class="col-md-8">
+                    <p>@Html.DisplayFor(model => model.To_ShortDate)</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="text-center my-3">
+        <a href="@Url.Action("Index", "Apartment")" class="button">Back to List</a>
+    </div>
 </div>
-<p>
-    @Html.ActionLink("Back to List", "Index", null, new { @class = "button" })
-</p>

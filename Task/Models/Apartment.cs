@@ -22,12 +22,32 @@ namespace Task.Models
 
         [JsonProperty(PropertyName = "can_sleep_max")]
         public int CanSleepMax { get; set; }
-
+                       
         [JsonProperty(PropertyName = "from")]
-        public DateTime From { get; set; }
-
+        public DateTime From
+        {
+            get { return from; }
+            set
+            {
+                from = value;
+                From_ShortDate = from.ToShortDateString();
+            }
+        }
+        private DateTime from;
+        public string From_ShortDate { get; private set; }
+                
         [JsonProperty(PropertyName = "to")]
-        public DateTime To { get; set; }
+        public DateTime To {
+            get { return to; }
+            set
+            {
+                to = value;
+                To_ShortDate = to.ToShortDateString();
+            }
+        }
+
+        private DateTime to;
+        public string To_ShortDate { get; private set; }
 
     }
 }
