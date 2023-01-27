@@ -11,12 +11,14 @@ namespace Backend.Dao
     public class ApartmentRepository : IRepository<Apartment>
     {
         List<Apartment> apartments;
-        
+
         public IList<Apartment> GetAll()
         {
-            string fileName = @"C:\Users\Nikola\OneDrive - Visoko uciliste Algebra\Desktop\MyRent_Task\MyRent\Backend\Database\MyRentData.json";            
+            string sCurrentDirectory = AppDomain.CurrentDomain.BaseDirectory;
+            string filePath = Path.Combine(sCurrentDirectory, @"..\..\..\Database\MyRentData.json");
+            string fullFilePath = Path.GetFullPath(filePath);
 
-            string json = File.ReadAllText(fileName);
+            string json = File.ReadAllText(fullFilePath);
             apartments = JsonConvert.DeserializeObject<List<Apartment>>(json);
 
             return apartments;
