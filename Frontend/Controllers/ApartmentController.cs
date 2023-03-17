@@ -22,6 +22,7 @@ namespace Frontend.Controllers
         public async Task<ActionResult> Index(string searchInput)
         {
             var apartments = await repository.GetAll();
+            ViewData["data_table"] = apartments;
             if (searchInput == null || searchInput.IsNullOrWhiteSpace())
                 return View(apartments);
 

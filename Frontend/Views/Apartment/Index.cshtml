@@ -2,66 +2,108 @@
 
 @{
     ViewBag.Title = "Index";
+    var apartment_list = (IEnumerable<Frontend.Models.Apartment>)ViewData["data_table"];
+    System.Data.DataTable data_table = new System.Data.DataTable();    
 }
 <br />
 <br />
+@{
+    data_table.Columns.Add("Bedrooms", typeof(int));
+    data_table.Columns.Add("Name", typeof(string));
+    data_table.Columns.Add("Bathrooms", typeof(string));
+    data_table.Columns.Add("CanSleepMax", typeof(int));
+
+    // Dodaj redove u data_table
+    foreach (var apartment in apartment_list)
+    {
+        System.Data.DataRow row = data_table.NewRow();
+        row["Name"] = apartment.Name;
+        row["Bedrooms"] = apartment.Bedrooms;
+        row["Bathrooms"] = apartment.Bathrooms;
+        row["CanSleepMax"] = apartment.CanSleepMax;
+        data_table.Rows.Add(row);
+    }
+
+    if (data_table.Rows.Count == 0 || data_table.Rows[0]["Name"].ToString().IsEmpty())
+    {
+        <div>TABLE HAS NO DATA OR SPECIFIC COLUMN IS NOT EMPTY</div>
+    }
+
+    else
+    { 
+        <div>LIST OF APARTMENTS</div>
+    }
+
+    using (Html.BeginForm("Index", "Apartment", FormMethod.Get))
+    {
+        <ul class="nav navbar-nav">
+            <li>@Html.TextBox("searchInput")<input type="submit" value="Search" /></li>
+        </ul>
+    }
+}
+
+
 
 <h2>Apartments</h2>
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.IDApartment)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Name)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bedrooms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Bathrooms)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.CanSleepMax)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.From)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.To)
-        </th>
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<table class="table" id="apartmentTable">
+    <thead>
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.IDApartment)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Name)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bedrooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Bathrooms)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.CanSleepMax)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.From_ShortDate)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.To_ShortDate)
-            </td>
-            <td>
-                @Html.ActionLink("Details", "Details", new { id = item.IDApartment }, new { @class = "button" })
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.IDApartment)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bedrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Bathrooms)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CanSleepMax)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.From)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.To)
+            </th>
+            <th></th>
         </tr>
-    }
+    </thead>
+
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IDApartment)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bedrooms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Bathrooms)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CanSleepMax)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.From_ShortDate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.To_ShortDate)
+                </td>
+                <td>
+                    @Html.ActionLink("Details", "Details", new { id = item.IDApartment }, new { @class = "button" })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>
