@@ -12,16 +12,16 @@ namespace Frontend.Controllers
 {
     public class ApartmentController : Controller
     {
-        private IRepository<Apartment> repository;
+        private IRepository<Apartment> _repository;
 
         public ApartmentController()
         {
-            repository = RepositoryFactory.GetApartmentRepository();
+            _repository = new ApartmentRepository();
         }
 
         public async Task<ActionResult> Index(string searchInput)
         {
-            var apartments = await repository.GetAll();
+            var apartments = await _repository.GetAll();
             ViewData["data_table"] = apartments;
             if (searchInput == null || searchInput.IsNullOrWhiteSpace())
                 return View(apartments);
@@ -29,10 +29,9 @@ namespace Frontend.Controllers
             return View(apartments.Where(a => a.Name.ToLower().StartsWith(searchInput.ToLower())));
         }
 
-
         public ActionResult Details(int id)
         {
-            var apartment = repository.GetById(id);
+            var apartment = _repository.GetById(id);
 
             if (apartment == null)
                 return HttpNotFound();

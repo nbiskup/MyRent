@@ -10,6 +10,7 @@ namespace Backend.Dao
     {
         const string PATH_JSON = @"..\..\..\Database\MyRentData.json";
         const string PATH_XML = @"..\..\..\Database\apartments.xml";
+        
         List<Apartment> apartments;
 
         public IList<Apartment> GetAll()

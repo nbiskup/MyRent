@@ -120,7 +120,6 @@
     <Compile Include="Controllers\ApartmentController.cs" />
     <Compile Include="Dao\ApartmentRepository.cs" />
     <Compile Include="Dao\IRepository.cs" />
-    <Compile Include="Dao\RepositoryFactory.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>

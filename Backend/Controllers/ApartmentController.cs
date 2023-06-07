@@ -8,16 +8,16 @@ namespace Backend.Controllers
     [Route("[controller]")]
     public class ApartmentController : ControllerBase
     {
-        private IRepository<Apartment> repository;
+        private IRepository<Apartment> _repository;
         public ApartmentController()
         {
-            repository = RepositoryFactory.GetApartmentRepository();
+            _repository = new ApartmentRepository();
         }
 
         [HttpGet]
         public IActionResult Index()
         {
-            var apartments = repository.GetAll();
+            var apartments = _repository.GetAll();
 
             return Ok(apartments);
         }
@@ -25,7 +25,7 @@ namespace Backend.Controllers
         [HttpGet("XML")]
         public IActionResult IndexXml()
         {
-            var apartments = repository.GetAllXml();
+            var apartments = _repository.GetAllXml();
 
             return Ok(apartments);
         }
@@ -33,7 +33,7 @@ namespace Backend.Controllers
         [HttpGet("AsXmlDocument")]
         public ContentResult IndexXmlDocument()
         {
-            var xmlDocument = repository.GetAllAsXmlDocument();
+            var xmlDocument = _repository.GetAllAsXmlDocument();
             string xmlString = xmlDocument.ToString();
 
             return Content(xmlString, "application/xml");
