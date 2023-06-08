@@ -15,7 +15,7 @@ namespace Backend.Controllers
         }
 
         [HttpGet("Index")]
-        public IActionResult Index(string apartmentName = null)
+        public IActionResult Index(string? apartmentName)
         {
             var apartments = _repository.GetAll();
             
