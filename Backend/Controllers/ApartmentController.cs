@@ -14,12 +14,15 @@ namespace Backend.Controllers
             _repository = new ApartmentRepository();
         }
 
-        [HttpGet]
-        public IActionResult Index()
+        [HttpGet("Index")]
+        public IActionResult Index(string apartmentName = null)
         {
             var apartments = _repository.GetAll();
+            
+            if (string.IsNullOrWhiteSpace(apartmentName))
+                return Ok(apartments);
 
-            return Ok(apartments);
+            return Ok(apartments.Where(a => a.Name.ToLower().StartsWith(apartmentName.ToLower())));
         }
 
         [HttpGet("XML")]
