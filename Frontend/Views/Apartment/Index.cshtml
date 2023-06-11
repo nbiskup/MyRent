@@ -27,12 +27,7 @@
     if (data_table.Rows.Count == 0 || data_table.Rows[0]["Name"].ToString().IsEmpty())
     {
         <div>TABLE HAS NO DATA OR SPECIFIC COLUMN IS NOT EMPTY</div>
-    }
-
-    else
-    { 
-        <div>LIST OF APARTMENTS</div>
-    }
+    }   
 
     using (Html.BeginForm("Index", "Apartment", FormMethod.Get))
     {
@@ -41,8 +36,6 @@
         </ul>
     }
 }
-
-
 
 <h2>Apartments</h2>
 

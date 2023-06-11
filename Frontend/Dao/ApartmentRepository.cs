@@ -6,7 +6,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
-using System.Web;
 
 namespace Frontend.Dao
 {
@@ -15,7 +14,7 @@ namespace Frontend.Dao
         public List<Apartment> apartments;
         public async Task<IList<Apartment>> GetAll()
         {
-            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:5078/apartment");
+            HttpWebRequest request = (HttpWebRequest)WebRequest.Create("http://localhost:5078/apartment/Index");
             request.AutomaticDecompression = DecompressionMethods.GZip | DecompressionMethods.Deflate;
 
             using (HttpWebResponse response = (HttpWebResponse)request.GetResponse())
